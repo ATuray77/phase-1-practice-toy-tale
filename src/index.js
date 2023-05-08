@@ -1,5 +1,109 @@
 let addToy = false;
 
+/*
+//function to update likes
+function updateLikes(id, newNumberOfLikes) {
+  fetch(`http://localhost:3000/toys/${id}`, {
+    method: "PATCH",
+    headers:
+  {
+    "Content-Type": "application/json",
+    Accept: "application/json"
+  },
+
+body: JSON.stringify({
+  "likes": newNumberOfLikes
+})
+
+  })
+ 
+}
+
+//TASK 1: this function adds toy info to the page
+function createCardElement(toy) {
+  // function to create a card element with a class called card
+  let card = document.createElement("div"); //creates a div called card
+  card.classList.add("card"); // adds the class card to the div element
+  let h2 = document.createElement("h2"); // creates h2 element
+  h2.textContent = toy.name; //adds a content to the h2 element
+  let img = document.createElement("img"); //creates a image tag
+  img.src = toy.image; // source attribute for the image
+  img.classList.add("toy-avatar"); //adds class for the image
+  let p = document.createElement("p"); //creates a p tag
+  p.textContent = `${toy.likes} Likes`; //adds content to the p tag
+
+  let button = document.createElement("button"); // creates a botton element
+
+   //TASK 3: To increase toy likes
+   button.addEventListener("click", () => {  //increasing the likes
+    p.textContent = `${toy.liks += 1} Likes`;
+    updateLikes(toy.id, toy.likes) //a function to update likes, needs to know the toy id (toy.id) and number of likes (toy.likes)
+  })
+
+
+  button.classList.add("like-botton"); // adds a class  to botton element
+  button.id = toy.id; //adds the id attribute to button element
+  button.textContent = "Like ❤️"; //adds text content to button
+
+  card.append(h2, img, p, button) // on our card div, we need to attach all the above inside this card
+   //append child cannot work here because it will add one element at a time.
+  document.getElementById("toy-collection").appendChild(card); //adds card to 'toy collection' div at the bottom
+}
+
+//Sending New Toy to the database
+function sendItOut(newToy) {
+  fetch(" http://localhost:3000/toys", { //post request is sending an object as a second parameter
+    method: "POST", //POST method
+    headers:
+      {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      
+  body: JSON.stringify({ //body of the POST
+
+    ...newToy, //using a spread operator to add the new toy object. the commented code below is also a viable alternative
+    // name: newToy.name,
+    // image: newToy.image,
+    likes: 0
+  })
+    .then(responseToy => createCardElement(responseToy)) //to grab the data that is coming back in the response body and add it to the DOM
+  })
+}
+
+//first task: fetch request gets all the data and makes a card for each toy using for..Each
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("http://localhost:3000/toys")
+    .then(response => response.json()) //converts the response into a json data
+    .then(toys => toys.forEach(toy => createCardElement(toy))); //creates card element for each toy using json data
+
+  const addBtn = document.querySelector("#new-toy-btn");
+  const toyFormContainer = document.querySelector(".container");
+  addBtn.addEventListener("click", () => {
+    // hide & seek with the form
+    addToy = !addToy;
+    if (addToy) {
+      toyFormContainer.style.display = "block";
+    } else {
+      toyFormContainer.style.display = "none";
+    }
+  });
+});
+
+//TASK 2: Adds TOY to the database and display it to the DOM and page
+const form = document.querySelector("form.add-toy-form") //gives us the first form that matches the query
+form.addEventListener("submit", (e) => { //add eventlistener to the submit button
+  e.preventDefault();  //prevents from refreshing
+  const formData = Object.fromEntries(new FormData(e.target)); //targeting a from input data. grabs the form elements and turns all it properties into a json object
+  sendItOut(formData) // sending our target into the database
+})
+*/
+//unto is the new code
+
+
+//start of the comment I placed
+
+
 //FUNCTION TO UPDATE LIKES
 function updateLikes(id, newNumberOfLikes) {
 fetch(`http://localhost:3000/toys/${id}`, { //using back ticks in order to use interpolation to get id
@@ -39,6 +143,9 @@ function createCardElement(toy) {  //takes toy, creates a div and appends it to 
   - button tag with a class "like-btn" and an id attribute set to the toy's id number
 
   */
+
+//start of the comment I placed
+
 
   let h2 = document.createElement("h2"); //creates h2 element
   h2.textContent = toy.name; //adds a content to h2 element
@@ -96,6 +203,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = Object.fromEntries(new FormData(event.target)); //a better way of targeting a from input data. grabs the form elements and turns all it properties into a json element
     sendItOut(formData);
   });
+  //end of the comment I placed
+  
 
   const addBtn = document.querySelector("#new-toy-btn");
   const toyFormContainer = document.querySelector(".container");
@@ -109,6 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// comment I placed
 
 /*
 Add a New Toy
@@ -117,7 +227,6 @@ When a user submits the toy form, two things should happen:
 A POST request should be sent to http://localhost:3000/toys and the new toy added to Andy's Toy Collection.
 If the post is successful, the toy should be added to the DOM without reloading the page.
 In order to send a POST request via fetch(), give the fetch() a second argument of an object. This object should specify the method as POST and also provide the appropriate headers and the JSON data for the request. The headers and body should look something like this:
-
 headers:
 {
   "Content-Type": "application/json",
@@ -128,5 +237,5 @@ body: JSON.stringify({
   "name": "Jessie",
   "image": "https://vignette.wikia.nocookie.net/p__/images/8/88/Jessie_Toy_Story_3.png/revision/latest?cb=20161023024601&path-prefix=protagonist",
   "likes": 0
-})
+});
 */
